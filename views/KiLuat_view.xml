@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="kiLuat_tree_view" model="ir.ui.view">
+            <field name="name">Kỉ luật Tree View</field>
+            <field name="model">ki.luat</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sv_id"/>
+                    <field name="ho_sv"/>
+                    <field name="ten_sv"/>
+                    <field name="loi_vi_pham"/>
+                    <field name="hinh_thuc_kl"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="kiluat_form_view" model="ir.ui.view">
+            <field name="name">kiluat</field>
+            <field name="model">ki.luat</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="sv_id" required="1"/>
+                                <field name="ho_sv" required="1"/>
+                                <field name="ten_sv" required="1"/>
+                                <field name="loi_vi_pham" required="1"/>
+                                <field name="ngay_kl" required="1"/>
+                            </group>
+                            <group>
+                                <field name="hinh_thuc_kl" required="1"/>
+                                <field name="so_lan_kl" required="1"/>
+                                <field name="ghi_chu"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ki_luat_action" model="ir.actions.act_window">
+            <field name="name">Kỷ luật</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ki.luat</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="kiluat_search_view" model="ir.ui.view">
+        <field name="name">ki.luat.search</field>
+        <field name="model">ki.luat</field>
+        <field name="arch" type="xml">
+            <search string="Mã sinh viên">
+                <field name="sv_id"/>
+            </search>
+        </field>
+        </record>
+
+        <menuitem id="kiluat_root_menu" name="Kỷ luật" sequence="9"/>
+        <menuitem id="kiluat_child_menu" parent="sv_root_menu"
+                  action="ki_luat_action" name="Kỷ luật" sequence="10"/>
+    </data>
+</odoo>

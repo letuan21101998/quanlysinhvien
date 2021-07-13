@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="report_lop_lop_wizard_qweb"
+                string="Báo cáo lớp"
+                model="lop.lop.base.report"
+                report_type="qweb-html"
+                file="quan_ly_sinh_vien.report_lop_wizard"
+                name="quan_ly_sinh_vien.report_lop_wizard"
+                menu="False"/>
+
+        <template id="report_lop_wizard">
+            <link rel="stylesheet" href="/quan_ly_sinh_vien/static/src/css/style.css"/>
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <span id="file-name" class="d-none">Bc_lop.xls</span>
+                    <a id="dlink" style="display:none;"/>
+                    <div id="id_tbl" style="width:100%;">
+                        <style type="text/css">
+                            table, td, tr {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                border-width:thin;
+                                text-align: left;
+                                padding: 10px;
+                                overflow: hidden;
+                                min-width:100%;
+                                text-align: center;
+                            }
+                            th {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                border-width:thin;
+                                text-align: center;
+                                padding: 10px;
+                                background-color: #89afd7;
+                                color: #000000;
+                                overflow: hidden;
+                            }
+                            h1, h3 {
+                                text-align: center;
+                            }
+                        </style>
+                        <div>
+                            Tên lớp: <t t-esc="profile['ten_lop']"/>
+                        </div>
+                        <div style="width: 100%;font-family: 'Times New Roman', Times, serif; font-size: 14pt">
+                            <table id="table_id">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Họ sinh viên</th>
+                                        <th>Tên sinh viên</th>
+                                        <th>Mã sinh viên</th>
+                                        <th>Ngày sinh</th>
+                                        <th>Số điện thoại</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="datas" t-as="item">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="item['stt']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['ho_sv']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['ten_sv']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['ma_sv']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['ngay_sinh']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['so_dt']"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

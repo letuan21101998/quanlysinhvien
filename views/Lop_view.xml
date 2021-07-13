@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="loplop_tree_view" model="ir.ui.view">
+            <field name="name">Lớp Tree View</field>
+            <field name="model">lop.lop</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_lop"/>
+                    <field name="ten_lop"/>
+                    <field name="khoa_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="loplop_form_view" model="ir.ui.view">
+            <field name="name">loplop</field>
+            <field name="model">lop.lop</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ma_lop" required="1"/>
+                                <field name="ten_lop" required="1"/>
+                                <field name="khoa_id" required="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="hososv" string="Danh sách sinh viên">
+                                <field name="ma_lop_ids" context="{'default_sv_id': id}">
+                                    <tree>
+                                        <field name="ma_sv"/>
+                                        <field name="ho_sv"/>
+                                        <field name="ten_sv"/>
+                                        <field name="ngay_sinh"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="ho_sv" required="1"/>
+                                                    <field name="ten_sv" required="1"/>
+                                                    <field name="ma_sv" required="1"/>
+                                                    <field name="ngay_sinh" required="1"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="lop_lop_action" model="ir.actions.act_window">
+            <field name="name">Lớp</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lop.lop</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="loplop_search_view" model="ir.ui.view">
+        <field name="name">lop.lop.search</field>
+        <field name="model">lop.lop</field>
+        <field name="arch" type="xml">
+            <search string="Lớp">
+                <field name="ma_lop"/>
+                <field name="ten_lop"/>
+            </search>
+        </field>
+        </record>
+
+        <menuitem id="loplop_root_menu" name="Lớp" sequence="6"/>
+
+        <menuitem id="loplop_child_menu" parent="sv_root_menu"
+                  action="lop_lop_action" name="Lớp" sequence="7"/>
+    </data>
+</odoo>

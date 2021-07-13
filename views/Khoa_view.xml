@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="khoakhoa_tree_view" model="ir.ui.view">
+            <field name="name">Khoa Tree View</field>
+            <field name="model">khoa.khoa</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_khoa"/>
+                    <field name="ten_khoa"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="khoakhoa_form_view" model="ir.ui.view">
+            <field name="name">khoakhoa</field>
+            <field name="model">khoa.khoa</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ma_khoa" required="1"/>
+                                <field name="ten_khoa" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="khoa_khoa_action" model="ir.actions.act_window">
+            <field name="name">Khoa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">khoa.khoa</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="khoakhoa_search_view" model="ir.ui.view">
+        <field name="name">khoa.khoa.search</field>
+        <field name="model">khoa.khoa</field>
+        <field name="arch" type="xml">
+            <search string="Khoa">
+                <field name="ma_khoa"/>
+                <field name="ten_khoa"/>
+            </search>
+        </field>
+        </record>
+
+        <menuitem id="khoakhoa_root_menu" name="Khoa" sequence="5"/>
+        <menuitem id="khoakhoa_child_menu" parent="sv_root_menu"
+                  action="khoa_khoa_action" name="Khoa" sequence="6"/>
+    </data>
+</odoo>

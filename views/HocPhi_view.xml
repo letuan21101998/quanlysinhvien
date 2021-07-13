@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hocphi_tree_view" model="ir.ui.view">
+            <field name="name">Học phí Tree View</field>
+            <field name="model">hoc.phi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_hk"/>
+                    <field name="hoc_ky_id"/>
+                    <field name="ho_sv"/>
+                    <field name="ten_sv"/>
+                    <field name="sv_id"/>
+                    <field name="tong_tc"/>
+                    <field name="hoc_phi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hoc_phi_form_view" model="ir.ui.view">
+            <field name="name">hocphi</field>
+            <field name="model">hoc.phi</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ma_hk" required="1"/>
+                                <field name="hoc_ky_id" required="1"/>
+                                <field name="ho_sv" required="1"/>
+                                <field name="ten_sv" required="1"/>
+                                <field name="sv_id" required="1"/>
+                                <field name="tong_tc" required="1"/>
+                                <field name="hoc_phi" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hoc_phi_action" model="ir.actions.act_window">
+            <field name="name">Học phí</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hoc.phi</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="hocphi_search_view" model="ir.ui.view">
+        <field name="name">hoc.phi.search</field>
+        <field name="model">hoc.phi</field>
+        <field name="arch" type="xml">
+            <search string="Mã sinh viên">
+                <field name="sv_id"/>
+            </search>
+        </field>
+        </record>
+
+        <menuitem id="hocphi_root_menu" name="Học học" sequence="11"/>
+        <menuitem id="hocphi_child_menu" parent="sv_root_menu"
+                  action="hoc_phi_action" name="Học phí" sequence="13"/>
+    </data>
+</odoo>

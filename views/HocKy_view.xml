@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hocky_tree_view" model="ir.ui.view">
+            <field name="name">Học kỳ Tree View</field>
+            <field name="model">hoc.ky</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_hk"/>
+                    <field name="ten_hk"/>
+                    <field name="nam_hoc"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hocky_form_view" model="ir.ui.view">
+            <field name="name">hocky</field>
+            <field name="model">hoc.ky</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ma_hk" required="1"/>
+                                <field name="ten_hk" required="1"/>
+                                <field name="nam_hoc" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hoc_ky_action" model="ir.actions.act_window">
+            <field name="name">Học kỳ</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hoc.ky</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="hocky_search_view" model="ir.ui.view">
+        <field name="name">hoc.ky.search</field>
+        <field name="model">hoc.ky</field>
+        <field name="arch" type="xml">
+            <search string="Mã học kỳ">
+                <field name="ma_hk"/>
+            </search>
+        </field>
+        </record>
+
+        <menuitem id="hocky_root_menu" name="Học kỳ" sequence="7"/>
+        <menuitem id="hocky_child_menu" parent="sv_root_menu"
+                  action="hoc_ky_action" name="Học kỳ" sequence="8"/>
+    </data>
+</odoo>

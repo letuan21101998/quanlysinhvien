@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hoso_sv_tree_view" model="ir.ui.view">
+            <field name="name">Hồ sơ SV Tree view</field>
+            <field name="model">ho.so.sv</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ho_sv"/>
+                    <field name="ten_sv"/>
+                    <field name="ma_sv"/>
+                    <field name="ngay_sinh"/>
+                    <field name="gioi_tinh"/>
+                    <field name="so_dt"/>
+                    <field name="ngay_nhap_hoc"/>
+                    <field name="khoa_hoc_id"/>
+                    <field name="ma_khoa_id"/>
+                    <field name="lop_id"/>
+                    <!--                    <field name="ma_kh"/>-->
+                    <!--                    <field name="ma_lop"/>-->
+                    <!--                    <field name="diem_dau_vao"/>-->
+                    <!--                    <field name="diem_dau_vao2"/>-->
+                    <!--                    <field name="diem_dau_vao3"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="hoso_sv_form_view" model="ir.ui.view">
+            <field name="name">hoso_sv</field>
+            <field name="model">ho.so.sv</field>
+            <field name="arch" type="xml">
+                <form string="Students">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ho_sv"/>
+                                <field name="ten_sv" required="1"/>
+                                <field name="ma_sv" required="1"/>
+                                <field name="ngay_sinh" eval="time.strftime('%d-%m-%Y)" required="1"/>
+                                <field name="gioi_tinh" required="1"/>
+                                <field name="so_dt"/>
+                            </group>
+                            <group>
+                                <field name="dia_chi"/>
+                                <field name="que_quan" required="1"/>
+                                <field name="dan_toc"/>
+                                <field name="ton_giao"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="ten_bo" required="1"/>
+                                <field name="nghe_bo"/>
+                            </group>
+                            <group>
+                                <field name="ten_me" required="1"/>
+                                <field name="nghe_me"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="khoa_hoc_id" required="1"/>
+                                <field name="ma_khoa_id" required="1"/>
+                                <field name="lop_id" required="1" domain="[('khoa_id','=',ma_khoa_id)]"/>
+                            </group>
+                            <group>
+                                <field name="ngay_nhap_hoc" eval="time.strftime('%d-%m-%Y)"/>
+                                <field name="diem_dau_vao" required="1"/>
+                                <field name="hinh_thuc_dao_tao" required="1"/>
+                                <!--                                <field name="diem_dau_vao3" required="1"/>-->
+                            </group>
+                            <group>
+                                <field name="ngay_tot_nghiep" eval="time.strftime('%d-%m-%Y)"/>
+                                <field name="xep_loai_tn" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="bangdiem" string="Bảng điểm">
+                                <field name="bang_diem_ids" context="{'default_sv_id': id}">
+                                    <tree>
+                                        <field name="ten_mh"/>
+                                        <field name="diem_tp1"/>
+                                        <field name="diem_tp2"/>
+                                        <field name="diem_thi"/>
+                                        <field name="diem_tk"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <!--                                                    <field name="sv_id" invisible="1"/>-->
+                                                    <field name="sv_id" readonly="1" force_save="1"/>
+                                                    <field name="ma_sv" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="mon_hoc_id" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="diem_tp1" required="1"/>
+                                                    <field name="diem_tp2" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="diem_lan1" required="1"/>
+                                                    <field name="diem_lan2" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="diem_thi" required="1"/>
+                                                    <field name="diem_tk" required="1"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="khenthuong" string="Khen thưởng">
+                                <field name="khen_thuong_ids" context="{'default_sv_id': id}">
+                                    <tree>
+                                        <field name="ngay_kt"/>
+                                        <field name="thanh_tich"/>
+                                        <field name="hinh_thuc_kt"/>
+                                        <field name="danh_muc_kt"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="sv_id" readonly="1" force_save="1"/>
+                                                    <field name="thanh_tich" required="1"/>
+                                                    <field name="ngay_kt" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="hinh_thuc_kt" required="1"/>
+                                                    <field name="danh_muc_kt" required="1"/>
+                                                    <field name="ghi_chu" required="1"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                            <page name="kiluat" string="Kỉ luật">
+                                <field name="ki_luat_ids" context="{'default_sv_id': id}">
+                                    <tree>
+                                        <field name="ngay_kl" required="1"/>
+                                        <field name="loi_vi_pham" required="1"/>
+                                        <field name="hinh_thuc_kl" required="1"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="sv_id" readonly="1" force_save="1"/>
+                                                    <field name="loi_vi_pham" required="1"/>
+                                                    <field name="ngay_kl" required="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="hinh_thuc_kl" required="1"/>
+                                                    <field name="so_lan_kl" required="1"/>
+                                                    <field name="ghi_chu" required="1"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hoso_sv_search_view" model="ir.ui.view">
+            <field name="name">ho.so.sv.search</field>
+            <field name="model">ho.so.sv</field>
+            <field name="arch" type="xml">
+                <search string="Mã sinh viên">
+                    <field name="ma_sv"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="hoso_sv_action" model="ir.actions.act_window">
+            <field name="name">Hồ sơ sinh viên</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ho.so.sv</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sv_root_menu" name="Quản lý sinh viên" web_icon="quan_ly_sinh_vien,static/description/logo.png"
+                  sequence="0"/>
+        <menuitem id="sv_child_menu" parent="sv_root_menu"
+                  action="hoso_sv_action" name="Hồ sơ sinh viên" sequence="1"/>
+    </data>
+</odoo>

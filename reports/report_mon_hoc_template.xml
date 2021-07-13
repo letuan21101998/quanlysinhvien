@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="report_mon_hoc_wizard_qweb"
+                string="Báo cáo bảng điểm môn học"
+                model="mon.hoc.base.report"
+                report_type="qweb-html"
+                file="quan_ly_sinh_vien.report_mon_hoc_wizard"
+                name="quan_ly_sinh_vien.report_mon_hoc_wizard"
+                menu="False"/>
+
+        <template id="report_mon_hoc_wizard">
+            <link rel="stylesheet" href="/quan_ly_sinh_vien/static/src/css/style.css"/>
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <span id="file-name" class="d-none">Bc_mon_hoc.xls</span>
+                    <a id="dlink" style="display:none;"/>
+                    <div id="id_tbl" style="width:100%;">
+                        <style type="text/css">
+                            table, td, tr {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                border-width:thin;
+                                text-align: left;
+                                padding: 10px;
+                                overflow: hidden;
+                                min-width:100%;
+                                text-align: center;
+                            }
+                            th {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                border-width:thin;
+                                text-align: center;
+                                padding: 10px;
+                                background-color: #89afd7;
+                                color: #000000;
+                                overflow: hidden;
+                            }
+                            h1, h3 {
+                                text-align: center;
+                            }
+                        </style>
+                        <div>
+                            Tên môn học: <t t-esc="name"/>
+                        </div>
+                        <div style="width: 100%;font-family: 'Times New Roman', Times, serif; font-size: 14pt">
+                            <table id="table_id">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Họ sinh viên</th>
+                                        <th>Tên sinh viên</th>
+                                        <th>Mã sinh viên</th>
+                                        <th>Điểm thành phần 1</th>
+                                        <th>Điểm thành phần 2</th>
+                                        <th>Điểm thi lần 1</th>
+                                        <th>Điểm thi lần 2</th>
+                                        <th>Điểm thi</th>
+                                        <th>Điểm tổng kết</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="datas" t-as="item">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="item['stt']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['ho_sv']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['ten_sv']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['ma_sv']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['diem_tp1']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['diem_tp2']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['diem_lan1']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['diem_lan2']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['diem_thi']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="item['diem_tk']"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

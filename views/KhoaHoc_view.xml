@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="khoahoc_tree_view" model="ir.ui.view">
+            <field name="name">Khóa học Tree View</field>
+            <field name="model">khoa.hoc</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_kh"/>
+                    <field name="ten_kh"/>
+                    <field name="nam_hoc"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="khoahoc_form_view" model="ir.ui.view">
+            <field name="name">khoahoc</field>
+            <field name="model">khoa.hoc</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="ma_kh" required="1"/>
+                                <field name="ten_kh" required="1"/>
+                                <field name="nam_hoc" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="khoa_hoc_action" model="ir.actions.act_window">
+            <field name="name">Khóa học</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">khoa.hoc</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="khoahoc_search_view" model="ir.ui.view">
+        <field name="name">khoa.hoc.search</field>
+        <field name="model">khoa.hoc</field>
+        <field name="arch" type="xml">
+            <search string="Mã khóa học">
+                <field name="ma_kh"/>
+                <field name="ten_kh"/>
+            </search>
+        </field>
+        </record>
+
+        <menuitem id="khoahoc_root_menu" name="Khóa học" sequence="4"/>
+        <menuitem id="khoahoc_child_menu" parent="sv_root_menu"
+                  action="khoa_hoc_action" name="Khóa học" sequence="5"/>
+    </data>
+</odoo>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="report_bang_tot_nghiep_wizard_qweb"
+                string="Báo cáo bằng tốt nghiệp"
+                model="bang.tot.nghiep.base.report"
+                report_type="qweb-html"
+                file="quan_ly_sinh_vien.report_bang_tot_nghiep_wizard"
+                name="quan_ly_sinh_vien.report_bang_tot_nghiep_wizard"
+                menu="False"/>
+
+        <template id="report_bang_tot_nghiep_wizard">
+            <link rel="stylesheet" href="/quan_ly_sinh_vien/static/src/css/style.css"/>
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <span id="file-name" class="d-none">Bc_bang_tot_nghiep.xls</span>
+                    <a id="dlink" style="display:none;"/>
+                    <div id="id_tbl" style="width:100%;">
+                        <style type="text/css">
+                            table, td, tr {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                border-width:thin;
+                                text-align: left;
+                                padding: 10px;
+                                overflow: hidden;
+                                min-width:100%;
+                            }
+                            th {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                border-width:thin;
+                                text-align: center;
+                                padding: 10px;
+                                background-color: #89afd7;
+                                color: #000000;
+                                overflow: hidden;
+                            }
+                            h1{
+                                text-align: center; color: red;
+                            }
+                            h3 {
+                                text-align: center;
+                            }
+                            body {
+                                width: 100%;
+                                float: right;
+                            }
+
+                            .class1,
+                            .class2,
+                            .class3 {
+                                width: 33.33%;
+                                float: right;
+                                height: 100px;
+                            }
+
+                            p {
+                                padding-top: 25px;
+                                text-align: center;
+                            }
+                        </style>
+                        <h3> CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h3>
+                        <br> </br>
+                        <h3><i><b>Hiệu trưởng</b></i></h3>
+                        <h3><i><b>Trường Đại học Mỏ - Địa chất</b></i></h3>
+                        <br> </br>
+                        <h3>Cấp</h3>
+                        <h1><b> BẰNG KỸ SƯ </b></h1>
+                        <h3><i><b><t t-esc="ten_khoa"/></b></i></h3>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <div>
+                            Cho: <h3><b><t t-esc="name"/></b></h3>
+                        </div>
+                        <div>
+                            Ngày sinh: <h3><b><t t-esc="ngay_sinh"/></b></h3>
+                        </div>
+                        <div>
+                            Năm tốt nghiệp: <h3><b><t t-esc="nam_tot_nghiep"/></b></h3>
+                        </div>
+                        <div>
+                            Xếp loại: <h3><b><t t-esc="xep_loai"/></b></h3>
+                        </div>
+                        <div>
+                            Hình thức đào tạo: <h3><b><t t-esc="hinh_thuc_dao_tao"/></b></h3>
+                        </div>
+                        <div class="class3">
+                            <h4><p><b> Hà Nội</b>, ngày <b><t t-esc="ngay_tot_nghiep"/></b> tháng <b><t t-esc="thang_tot_nghiep"/></b> năm <b><t t-esc="namm_tot_nghiep"/></b></p></h4>
+                            <h4><p><b> HIỆU TRƯỞNG </b></p></h4>
+                        </div>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <br> </br>
+                        <img src='/quan_ly_sinh_vien/static/description/logo.png' style="max-height: 50px;"/>
+                        <div>
+                            Số hiệu:
+                        </div>
+                        <div>
+                            Số vào sổ cấp bằng:
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

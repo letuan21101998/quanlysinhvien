@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_report_bang_diem_form">
+            <field name="name">Xuất dữ liệu bảng điểm</field>
+            <field name="model">base.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="sv_id" options="{'no_open': True, 'no_create_edit': True}"/>
+                    </group>
+                    <!--                    <div>-->
+                    <!--&lt;!&ndash;                        <h2>Xuất dữ liệu</h2>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                        <field name="data" readonly="1" filename="name"/>&ndash;&gt;-->
+                    <!--                    </div>-->
+                    <footer>
+                        <button name="show_report" string="Xem báo cáo" type="object" class="oe_highlight"/>
+                        <!--                        <button name="create_report" string="Xuất báo cáo" type="object" class="oe_highlight"/>-->
+                        <!--                        <button special="cancel" string="Hủy" type="object"/>-->
+                    </footer>
+                    <footer>
+                        <button special="cancel" string="Đóng" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_report_bang_diem">
+            <field name="name">Xuất dữ liệu bảng điểm</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">base.report</field>
+            <field name="view_id" ref="view_report_bang_diem_form"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="quan_ly_sinh_vien.model_bang_diem"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <menuitem id="baocao_child_menu" parent="sv_root_menu" name="Báo cáo" sequence="12"/>
+        <menuitem id="rpbangdiem_child_menu" parent="baocao_child_menu"
+                  action="action_report_bang_diem" name="Bảng điểm sinh viên" sequence="1"/>
+
+    </data>
+</odoo>
